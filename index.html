@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRICESLY - Smart Savings, Less Waste</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #dfe4dd;
+            color: #184b44;
+            overflow-x: hidden;
+        }
+
+        /* Page Transition System */
+        .page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            padding: 100px 0 40px;
+            will-change: transform, opacity;
+            transform: translateY(20px);
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(223, 228, 221, 0.95);
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #184b44;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        nav ul li a.active {
+            background-color: #2ea456;
+            color: white;
+        }
+
+        nav ul li a:hover:not(.active) {
+            color: #2ea456;
+        }
+
+        .logo {
+            height: 70px;
+            margin-right: 20px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Landing Page */
+        #landing {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #184b44;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .rotating-text {
+            font-size: 2rem;
+            min-height: 3rem;
+            margin-bottom: 2rem;
+            z-index: 1;
+            color: #2ea456;
+            font-weight: bold;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Updated Counters Section */
+        .counters-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .counter-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(223, 228, 221, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 350px;
+            position: relative;
+        }
+
+        .counter-text {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            color: #184b44;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .counter-since {
+            font-size: 0.8rem;
+            color: #2ea456;
+            font-style: italic;
+            text-align: left;
+        }
+
+        .counter-number {
+            color: red;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .counter-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            transform: translateZ(0);
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background-color: #2ea456;
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 164, 86, 0.3);
+            border: 2px solid #2ea456;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(46, 164, 86, 0.4);
+            background-color: #228a43;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #184b44;
+            border: 2px solid #184b44;
+        }
+
+        .btn-secondary:hover {
+            background-color: #184b44;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            z-index: 1;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Services Page */
+        #services {
+            z-index: 5;
+        }
+
+        .services-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2ea456;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .services-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .highlight-green {
+            color: #2ea456;
+            font-weight: bold;
+        }
+
+        .app-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border: 2px solid #F4C23B;
+        }
+
+        .feature-caption {
+            font-weight: bold;
+            color: #184b44;
+        }
+
+        /* Our Cause Page */
+        #cause {
+            z-index: 5;
+        }
+
+        .cause-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #184b44;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .cause-text {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .highlight-red {
+            color: red;
+            font-weight: bold;
+        }
+
+        .problem-section {
+            margin: 3rem auto;
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .problem-title {
+            font-size: 1.5rem;
+            color: #2ea456;
+            margin-bottom: 1rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 3rem auto;
+            max-width: 1000px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .solution-item {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .solution-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        .video-section {
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Page */
+        #contact {
+            z-index: 5;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-logo {
+            width: 150px;
+            margin: 0 auto 2rem;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            color: #2ea456;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: #184b44;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .contact-info {
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .contact-email, .contact-phone {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: #184b44;
+        }
+
+        .contact-cta {
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .rotating-text {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .counter-item {
+                min-width: 250px;
+                padding: 1rem;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            .services-title, .cause-title, .contact-title {
+                font-size: 2rem;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <img src="1.jpg" alt="PRICESLY Logo" class="logo">
+        <ul>
+            <li><a href="#home" class="nav-link active" data-target="landing">Home</a></li>
+            <li><a href="#services" class="nav-link" data-target="services">Services</a></li>
+            <li><a href="#cause" class="nav-link" data-target="cause">Our Cause</a></li>
+            <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Landing Page -->
+    <section class="page active" id="landing">
+        <video autoplay muted loop class="video-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-fresh-vegetables-rotating-on-a-turntable-4530-large.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        
+        <div class="container">
+            <h1 class="title">PRICESLY</h1>
+            
+            <div class="rotating-text">
+                <span id="rotating-text">LESS WASTE</span>
+            </div>
+            
+            <div class="counters-container">
+                <!-- Food Waste Counter -->
+                <div class="counter-item">
+                    <div class="counter-text">
+                        <div class="counter-label">Food Wasted</div>
+                        <div class="counter-since">since you entered</div>
+                        <div class="counter-number" id="food-number">0 metric tons</div>
+                    </div>
+                    <img src="pngtree-simulation-green-garbage-bag-image_1335956-removebg-preview.png" alt="Food Waste" class="counter-icon">
+                </div>
+                
+                <!-- Money Lost Counter -->
+                <div class="counter-item">
+                    <div class="counter-text">
+                        <div class="counter-label">Money Lost</div>
+                        <div class="counter-since">since you entered</div>
+                        <div class="counter-number" id="money-number">$0 USD</div>
+                    </div>
+                    <img src="animated-money-symbols-money-money-sign-clipart--m2i8i8d3d3i8Z5K9-removebg-preview.png" alt="Money Lost" class="counter-icon">
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <a href="#" class="btn btn-primary">FIND OUT MORE</a>
+                <a href="#" class="btn btn-secondary">JOIN OUR CAUSE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section class="page" id="services">
+        <div class="container">
+            <h2 class="services-title">Our <span class="highlight-green">Services</span></h2>
+            <p class="services-description">
+                PRICESLY automatically generates and optimizes your grocery list based on <span class="highlight-green">budget</span>, 
+                <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> and <span class="highlight-green">many more</span> for an effortless, eco-friendly shopping experience.
+            </p>
+            
+            <div class="app-features">
+                <div class="feature">
+                    <img src="WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM.jpeg" alt="Pricesly App">
+                    <p class="feature-caption">Download our App</p>
+                </div>
+                <div class="feature">
+                    <img src="WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(1).jpeg" alt="Questionnaire">
+                    <p class="feature-caption">Answer some questions to establish buying behaviour</p>
+                </div>
+                <div class="feature">
+                    <img src="WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(2).jpeg" alt="Shopping List">
+                    <p class="feature-caption">We will generate your list</p>
+                </div>
+                <div class="feature">
+                    <img src="WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(3).jpeg" alt="Barcode Scanner">
+                    <p class="feature-caption">Scan the receipt to update your list</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Cause Page -->
+    <section class="page" id="cause">
+        <div class="container">
+            <h2 class="cause-title">Our Cause</h2>
+            
+            <div class="cause-text">
+                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year—driven by household and retail inefficiencies—which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
+            </div>
+            
+            <div class="problem-section">
+                <h3 class="problem-title">This is because:</h3>
+                <ul style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <li>Consumers do not have the capacity or time to optimize their groceries in accordance with their goals and multitude of options</li>
+                    <li>Retailers still struggle to some extent to predict consumer demand</li>
+                </ul>
+            </div>
+            
+            <div class="problem-section">
+                <h3 class="problem-title">Pricesly wishes to remove:</h3>
+            </div>
+            
+            <div class="solutions-grid">
+                <div class="solution-item">
+                    <img src="7806375-removebg-preview.png" alt="Human Error">
+                    <h4>Human Error</h4>
+                </div>
+                <div class="solution-item">
+                    <img src="6724564-removebg-preview.png" alt="Food Waste">
+                    <h4>Food Waste</h4>
+                </div>
+                <div class="solution-item">
+                    <img src="13010464-removebg-preview.png" alt="Financial Loss">
+                    <h4>Financial Loss</h4>
+                </div>
+                <div class="solution-item">
+                    <img src="5429332-200-removebg-preview.png" alt="Time Loss">
+                    <h4>Time Loss</h4>
+                </div>
+            </div>
+            
+            <div class="video-section">
+                <h3>Check out our short video to understand how!</h3>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Pricesly (2).mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="page" id="contact">
+        <div class="contact-container">
+            <img src="1.jpg" alt="PRICESLY Logo" class="contact-logo">
+            <h2 class="contact-title">Ready to Make a Difference?</h2>
+            <p class="contact-subtitle">Join us in our mission to reduce food waste and save money. Get in touch today!</p>
+            
+            <div class="contact-info">
+                <div class="contact-email">pricesly.inc@gmail.com</div>
+                <div class="contact-phone">+40753122224</div>
+            </div>
+            
+            <div class="contact-cta">
+                <a href="#" class="btn btn-primary">GET STARTED NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Track when user entered the page
+        const startTime = new Date();
+        
+        // Enhanced Page Transition System
+        function showPage(targetId) {
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-target') === targetId);
+            });
+            
+            // Transition pages
+            document.querySelectorAll('.page').forEach(page => {
+                if (page.id === targetId) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+            
+            // Update URL
+            history.pushState({page: targetId}, '', `#${targetId}`);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Navigation Event Listeners
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage(this.getAttribute('data-target'));
+            });
+        });
+
+        // Handle Back/Forward Navigation
+        window.addEventListener('popstate', function(e) {
+            const page = e.state?.page || 'landing';
+            showPage(page);
+        });
+
+        // Initialize page from URL hash
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialPage = window.location.hash.substring(1) || 'landing';
+            showPage(initialPage);
+            
+            // Rotating Text
+            const rotatingTexts = ["LESS WASTE", "MORE QUALITY", "LESS MONEY", "PRECISE"];
+            let currentTextIndex = 0;
+            const rotatingTextElement = document.getElementById("rotating-text");
+            
+            function rotateText() {
+                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
+                rotatingTextElement.style.opacity = 0;
+                
+                setTimeout(() => {
+                    rotatingTextElement.textContent = rotatingTexts[currentTextIndex];
+                    rotatingTextElement.style.opacity = 1;
+                }, 500);
+            }
+            
+            setInterval(rotateText, 3000);
+            
+            // Counters - Calculate based on time since page load
+            const foodNumber = document.getElementById("food-number");
+            const moneyNumber = document.getElementById("money-number");
+            
+            function updateCounters() {
+                const now = new Date();
+                const secondsElapsed = (now - startTime) / 1000;
+                
+                foodNumber.textContent = Math.round(29.5 * secondsElapsed).toLocaleString() + " metric tons";
+                moneyNumber.textContent = "$" + Math.round(31700 * secondsElapsed).toLocaleString() + " USD";
+            }
+            
+            // Update counters every second
+            setInterval(updateCounters, 1000);
+            updateCounters(); // Initial update
+        });
+    </script>
+</body>
+</html>
