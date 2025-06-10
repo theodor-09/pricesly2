@@ -126,7 +126,13 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
+        /* --- Slot Machine Text Animation --- */
         .rotating-text {
+            position: relative;
+            display: inline-block;
+            height: 2.5rem;
+            overflow: hidden;
+            vertical-align: top;
             font-size: 2rem;
             min-height: 3rem;
             margin-bottom: 2rem;
@@ -134,6 +140,61 @@
             color: #2ea456;
             font-weight: bold;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        .rotating-words {
+            display: inline-block;
+            position: relative;
+            height: 2.5rem;
+        }
+        .rotating-word {
+            position: absolute;
+            opacity: 0;
+            transform: translateY(-100%);
+            animation: rotateWords 12s infinite;
+            color: #2ea456;
+            font-weight: bold;
+        }
+        .rotating-word:nth-child(1) { animation-delay: 0s; }
+        .rotating-word:nth-child(2) { animation-delay: 3s; }
+        .rotating-word:nth-child(3) { animation-delay: 6s; }
+        .rotating-word:nth-child(4) { animation-delay: 9s; }
+        @keyframes rotateWords {
+            0% { opacity: 0; transform: translateY(-100%); }
+            5% { opacity: 1; transform: translateY(0); }
+            20% { opacity: 1; transform: translateY(0); }
+            25% { opacity: 0; transform: translateY(100%); }
+            100% { opacity: 0; transform: translateY(100%); }
+        }
+
+        /* --- Testimonial Carousel --- */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: rgba(223, 228, 221, 0.7);
+            border-radius: 10px;
+            position: relative;
+            height: 120px;
+        }
+        .testimonial {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            padding: 0 20px;
+        }
+        .testimonial.active {
+            opacity: 1;
+        }
+        .testimonial blockquote {
+            font-style: italic;
+            color: #184b44;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #2ea456;
         }
 
         /* Updated Counters Section */
@@ -538,8 +599,30 @@
         <div class="container">
             <h1 class="title">PRICESLY</h1>
             
+            <!-- Slot Machine Rotating Text -->
             <div class="rotating-text">
-                <span id="rotating-text">LESS WASTE</span>
+                <div class="rotating-words">
+                    <span class="rotating-word">LESS WASTE</span>
+                    <span class="rotating-word">MORE QUALITY</span>
+                    <span class="rotating-word">LESS MONEY</span>
+                    <span class="rotating-word">PRECISE</span>
+                </div>
+            </div>
+
+            <!-- Testimonial Carousel -->
+            <div class="testimonials-container">
+                <div class="testimonial active">
+                    <blockquote>"Pricesly cut my grocery waste by 60%!"</blockquote>
+                    <div class="testimonial-author">- Sarah, Busy Mom</div>
+                </div>
+                <div class="testimonial">
+                    <blockquote>"I save $150 every month thanks to Pricesly"</blockquote>
+                    <div class="testimonial-author">- Michael, College Student</div>
+                </div>
+                <div class="testimonial">
+                    <blockquote>"Finally a solution that actually works"</blockquote>
+                    <div class="testimonial-author">- David, Environmentalist</div>
+                </div>
             </div>
             
             <div class="counters-container">
@@ -607,7 +690,7 @@
             <h2 class="cause-title">Our Cause</h2>
             
             <div class="cause-text">
-                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year—driven by household and retail inefficiencies—which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
+                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year—driven by household and retail inefficiencies—which amounts to <span class="highlight-red">trillions of dollars lost</span> and a massive environmental toll.
             </div>
             
             <div class="problem-section">
@@ -716,40 +799,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             const initialPage = window.location.hash.substring(1) || 'landing';
             showPage(initialPage);
-            
-            // Rotating Text
-            const rotatingTexts = ["LESS WASTE", "MORE QUALITY", "LESS MONEY", "PRECISE"];
-            let currentTextIndex = 0;
-            const rotatingTextElement = document.getElementById("rotating-text");
-            
-            function rotateText() {
-                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
-                rotatingTextElement.style.opacity = 0;
-                
-                setTimeout(() => {
-                    rotatingTextElement.textContent = rotatingTexts[currentTextIndex];
-                    rotatingTextElement.style.opacity = 1;
-                }, 500);
-            }
-            
-            setInterval(rotateText, 3000);
-            
+
             // Counters - Calculate based on time since page load
             const foodNumber = document.getElementById("food-number");
             const moneyNumber = document.getElementById("money-number");
             
             function updateCounters() {
-                const now = new Date();
-                const secondsElapsed = (now - startTime) / 1000;
-                
-                foodNumber.textContent = Math.round(29.5 * secondsElapsed).toLocaleString() + " metric tons";
-                moneyNumber.textContent = "$" + Math.round(31700 * secondsElapsed).toLocaleString() + " USD";
-            }
-            
-            // Update counters every second
-            setInterval(updateCounters, 1000);
-            updateCounters(); // Initial update
-        });
-    </script>
-</body>
-</html>
+                const
