@@ -126,6 +126,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
+        /* SLOT MACHINE ROTATING TEXT */
         .rotating-text {
             font-size: 2rem;
             min-height: 3rem;
@@ -133,7 +134,28 @@
             z-index: 1;
             color: #2ea456;
             font-weight: bold;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            position: relative;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .slot-anim {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s;
+            opacity: 0;
+            transform: translateY(70%);
+        }
+        .slot-anim.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slot-anim.out {
+            opacity: 0;
+            transform: translateY(-70%);
         }
 
         /* Updated Counters Section */
@@ -471,7 +493,64 @@
             animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
-        /* Mobile Responsiveness */
+        /* Testimonial Wheel */
+        .testimonial-wheel-container {
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .testimonial-wheel {
+            background: rgba(255,255,255,0.85);
+            border-radius: 20px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 30px 24px 20px 24px;
+            text-align: center;
+            min-height: 130px;
+            transition: box-shadow 0.3s;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .testimonial-quote {
+            font-size: 1.18rem;
+            color: #184b44;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #2ea456;
+        }
+        .testimonial-title {
+            font-size: 1rem;
+            color: #888;
+        }
+        .testimonial-wheel-controls {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+        }
+        .testimonial-wheel-controls button {
+            background: #2ea456;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .testimonial-wheel-controls button:hover {
+            background: #228a43;
+        }
+
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
@@ -513,6 +592,13 @@
             .solutions-grid {
                 grid-template-columns: 1fr;
             }
+            .testimonial-wheel-container {
+                bottom: 20px;
+                max-width: 98vw;
+            }
+            .testimonial-wheel {
+                padding: 18px 8px 12px 8px;
+            }
         }
     </style>
 </head>
@@ -538,8 +624,9 @@
         <div class="container">
             <h1 class="title">PRICESLY</h1>
             
-            <div class="rotating-text">
-                <span id="rotating-text">LESS WASTE</span>
+            <!-- SLOT MACHINE ROTATING TEXT -->
+            <div class="rotating-text" id="rotating-text-slot">
+                <span class="slot-anim active">LESS WASTE</span>
             </div>
             
             <div class="counters-container">
@@ -569,6 +656,18 @@
                 <a href="#" class="btn btn-secondary">JOIN OUR CAUSE</a>
             </div>
         </div>
+        <!-- TESTIMONIAL WHEEL -->
+        <div class="testimonial-wheel-container">
+            <div class="testimonial-wheel" id="testimonial-wheel">
+                <div class="testimonial-quote" id="testimonial-quote">Pricesly cut my grocery waste by 60%!</div>
+                <div class="testimonial-author" id="testimonial-author">Sarah</div>
+                <div class="testimonial-title" id="testimonial-title">Busy Mom</div>
+            </div>
+            <div class="testimonial-wheel-controls">
+                <button id="testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
+                <button id="testimonial-next" aria-label="Next testimonial">&#8594;</button>
+            </div>
+        </div>
     </section>
 
     <!-- Services Page -->
@@ -577,7 +676,7 @@
             <h2 class="services-title">Our <span class="highlight-green">Services</span></h2>
             <p class="services-description">
                 PRICESLY automatically generates and optimizes your grocery list based on <span class="highlight-green">budget</span>, 
-                <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> and <span class="highlight-green">many more</span> for an effortless, eco-friendly shopping experience.
+                <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> and <span class="highlight-green">many more</span> for an effortless, eco-friendly [...]
             </p>
             
             <div class="app-features">
@@ -607,7 +706,7 @@
             <h2 class="cause-title">Our Cause</h2>
             
             <div class="cause-text">
-                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year—driven by household and retail inefficiencies—which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
+                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year—driven by household and retail inefficiencies—which amounts to <span class="h[...]">
             </div>
             
             <div class="problem-section">
@@ -717,23 +816,32 @@
             const initialPage = window.location.hash.substring(1) || 'landing';
             showPage(initialPage);
             
-            // Rotating Text
+            // SLOT MACHINE Rotating Text
             const rotatingTexts = ["LESS WASTE", "MORE QUALITY", "LESS MONEY", "PRECISE"];
             let currentTextIndex = 0;
-            const rotatingTextElement = document.getElementById("rotating-text");
-            
-            function rotateText() {
-                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
-                rotatingTextElement.style.opacity = 0;
-                
-                setTimeout(() => {
-                    rotatingTextElement.textContent = rotatingTexts[currentTextIndex];
-                    rotatingTextElement.style.opacity = 1;
-                }, 500);
+            const rotatingTextSlot = document.getElementById("rotating-text-slot");
+
+            function createSlotSpan(text, className) {
+                const span = document.createElement("span");
+                span.className = `slot-anim${className ? ' ' + className : ''}`;
+                span.textContent = text;
+                return span;
             }
-            
-            setInterval(rotateText, 3000);
-            
+            function slotRotateText() {
+                const prevSpan = rotatingTextSlot.querySelector('.slot-anim.active');
+                if (prevSpan) {
+                    prevSpan.classList.remove('active');
+                    prevSpan.classList.add('out');
+                    setTimeout(() => {
+                        if (prevSpan.parentNode) rotatingTextSlot.removeChild(prevSpan);
+                    }, 500);
+                }
+                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
+                const newSpan = createSlotSpan(rotatingTexts[currentTextIndex], 'active');
+                rotatingTextSlot.appendChild(newSpan);
+            }
+            setInterval(slotRotateText, 2500);
+
             // Counters - Calculate based on time since page load
             const foodNumber = document.getElementById("food-number");
             const moneyNumber = document.getElementById("money-number");
@@ -750,6 +858,71 @@
             setInterval(updateCounters, 1000);
             updateCounters(); // Initial update
         });
+
+        // Testimonial Wheel
+        const testimonials = [
+            {
+                quote: "Pricesly cut my grocery waste by 60%!",
+                author: "Sarah",
+                title: "Busy Mom"
+            },
+            {
+                quote: "I save $150 every month thanks to Pricesly",
+                author: "Michael",
+                title: "College Student"
+            },
+            {
+                quote: "Finally a solution that actually works",
+                author: "David",
+                title: "Environmentalist"
+            }
+        ];
+
+        let testimonialIndex = 0;
+        const testimonialQuote = document.getElementById("testimonial-quote");
+        const testimonialAuthor = document.getElementById("testimonial-author");
+        const testimonialTitle = document.getElementById("testimonial-title");
+        const testimonialWheel = document.getElementById("testimonial-wheel");
+
+        function showTestimonial(idx) {
+            testimonialQuote.textContent = testimonials[idx].quote;
+            testimonialAuthor.textContent = testimonials[idx].author;
+            testimonialTitle.textContent = testimonials[idx].title;
+            testimonialWheel.classList.remove('fadein');
+            void testimonialWheel.offsetWidth; // trigger reflow for animation
+            testimonialWheel.classList.add('fadein');
+        }
+
+        // Optional: fade animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .testimonial-wheel.fadein {
+                animation: testimonialFade 0.5s;
+            }
+            @keyframes testimonialFade {
+                from { opacity: 0; transform: translateY(20px);}
+                to { opacity: 1; transform: translateY(0);}
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.getElementById("testimonial-prev").onclick = function() {
+            testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        };
+        document.getElementById("testimonial-next").onclick = function() {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        };
+        // Auto-rotate every 6 seconds
+        setInterval(() => {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        }, 6000);
+
+        // Initial show
+        showTestimonial(testimonialIndex);
+
     </script>
 </body>
 </html>
