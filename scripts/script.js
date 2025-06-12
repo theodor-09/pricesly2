@@ -44,7 +44,7 @@
             showPage(initialPage);
             
             // SLOT MACHINE Rotating Text - Improved Animation
-            const rotatingTexts = ["LESS WASTE", "MORE QUALITY", "LESS MONEY", "PRECISE"];
+            const rotatingTexts = ["Your time matters.", "That's why we make grocery shopping instant and easy.", "Optimizing your groceries has never been this fast.", "Stop fooling, join FOODIN'"];
             let currentTextIndex = 0;
             const rotatingTextSlot = document.getElementById("rotating-text-slot");
 
@@ -75,8 +75,8 @@
             
             // Start the rotation with a delay to allow initial animation
             setTimeout(() => {
-                setInterval(slotRotateText, 3000);
-            }, 2000);
+                setInterval(slotRotateText, 6000);
+            }, 1000);
 
             // Counters - Calculate based on time since page load
             const foodNumber = document.getElementById("food-number");
