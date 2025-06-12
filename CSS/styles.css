@@ -119,14 +119,36 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
+        /* SLOT MACHINE ROTATING TEXT - Improved Animation */
         .rotating-text {
-            font-size: 2rem;
-            min-height: 3rem;
+            font-size: 2.5rem;
+            min-height: 4rem;
             margin-bottom: 2rem;
             z-index: 1;
             color: #2ea456;
             font-weight: bold;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            position: relative;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .slot-anim {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        .slot-anim.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slot-anim.out {
+            opacity: 0;
+            transform: translateY(-100%);
         }
 
         /* Updated Counters Section */
@@ -243,6 +265,7 @@
             gap: 20px;
             z-index: 1;
             margin-top: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -464,14 +487,83 @@
             animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
-        /* Mobile Responsiveness */
+        /* Testimonial Wheel - Improved */
+        .testimonial-wheel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .testimonial-wheel-title {
+            font-size: 1.5rem;
+            color: #184b44;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .testimonial-wheel {
+            background: rgba(255,255,255,0.85);
+            border-radius: 20px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 30px 24px 20px 24px;
+            text-align: center;
+            min-height: 130px;
+            transition: box-shadow 0.3s;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .testimonial-quote {
+            font-size: 1.25rem;
+            color: #184b44;
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #2ea456;
+            font-size: 1.1rem;
+        }
+        .testimonial-title {
+            font-size: 1rem;
+            color: #888;
+        }
+        .testimonial-wheel-controls {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+        }
+        .testimonial-wheel-controls button {
+            background: #2ea456;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .testimonial-wheel-controls button:hover {
+            background: #228a43;
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
             }
             
             .rotating-text {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+                min-height: 3rem;
+                height: 3rem;
             }
             
             nav ul {
@@ -506,4 +598,15 @@
             .solutions-grid {
                 grid-template-columns: 1fr;
             }
+            .testimonial-wheel-container {
+                max-width: 90vw;
+                margin-top: 30px;
+            }
+            .testimonial-wheel {
+                padding: 18px 8px 12px 8px;
+            }
+            #landing {
+                padding-bottom: 200px;
+            }
         }
+        /* Our Blog Page */

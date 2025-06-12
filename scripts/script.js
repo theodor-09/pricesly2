@@ -43,23 +43,41 @@
             const initialPage = window.location.hash.substring(1) || 'landing';
             showPage(initialPage);
             
-            // Rotating Text
+            // SLOT MACHINE Rotating Text - Improved Animation
             const rotatingTexts = ["LESS WASTE", "MORE QUALITY", "LESS MONEY", "PRECISE"];
             let currentTextIndex = 0;
-            const rotatingTextElement = document.getElementById("rotating-text");
-            
-            function rotateText() {
-                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
-                rotatingTextElement.style.opacity = 0;
-                
-                setTimeout(() => {
-                    rotatingTextElement.textContent = rotatingTexts[currentTextIndex];
-                    rotatingTextElement.style.opacity = 1;
-                }, 500);
+            const rotatingTextSlot = document.getElementById("rotating-text-slot");
+
+            function createSlotSpan(text, className) {
+                const span = document.createElement("span");
+                span.className = `slot-anim${className ? ' ' + className : ''}`;
+                span.textContent = text;
+                return span;
             }
             
-            setInterval(rotateText, 3000);
+            function slotRotateText() {
+                const prevSpan = rotatingTextSlot.querySelector('.slot-anim.active');
+                if (prevSpan) {
+                    prevSpan.classList.remove('active');
+                    prevSpan.classList.add('out');
+                    setTimeout(() => {
+                        if (prevSpan.parentNode) rotatingTextSlot.removeChild(prevSpan);
+                    }, 800);
+                }
+                
+                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
+                const newSpan = createSlotSpan(rotatingTexts[currentTextIndex], 'active');
+                rotatingTextSlot.appendChild(newSpan);
+                
+                // Force reflow to trigger animation
+                void newSpan.offsetWidth;
+            }
             
+            // Start the rotation with a delay to allow initial animation
+            setTimeout(() => {
+                setInterval(slotRotateText, 3000);
+            }, 2000);
+
             // Counters - Calculate based on time since page load
             const foodNumber = document.getElementById("food-number");
             const moneyNumber = document.getElementById("money-number");
@@ -76,3 +94,67 @@
             setInterval(updateCounters, 1000);
             updateCounters(); // Initial update
         });
+
+        // Testimonial Wheel
+        const testimonials = [
+            {
+                quote: "Pricesly cut my grocery waste by 60%!",
+                author: "Sarah",
+                title: "Busy Mom"
+            },
+            {
+                quote: "I save $150 every month thanks to Pricesly",
+                author: "Michael",
+                title: "College Student"
+            },
+            {
+                quote: "Finally a solution that actually works",
+                author: "David",
+                title: "Environmentalist"
+            }
+        ];
+
+        let testimonialIndex = 0;
+        const testimonialQuote = document.getElementById("testimonial-quote");
+        const testimonialAuthor = document.getElementById("testimonial-author");
+        const testimonialTitle = document.getElementById("testimonial-title");
+        const testimonialWheel = document.getElementById("testimonial-wheel");
+
+        function showTestimonial(idx) {
+            testimonialQuote.textContent = testimonials[idx].quote;
+            testimonialAuthor.textContent = testimonials[idx].author;
+            testimonialTitle.textContent = testimonials[idx].title;
+            testimonialWheel.classList.remove('fadein');
+            void testimonialWheel.offsetWidth; // trigger reflow for animation
+            testimonialWheel.classList.add('fadein');
+        }
+
+        // Optional: fade animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .testimonial-wheel.fadein {
+                animation: testimonialFade 0.5s;
+            }
+            @keyframes testimonialFade {
+                from { opacity: 0; transform: translateY(20px);}
+                to { opacity: 1; transform: translateY(0);}
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.getElementById("testimonial-prev").onclick = function() {
+            testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        };
+        document.getElementById("testimonial-next").onclick = function() {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        };
+        // Auto-rotate every 6 seconds
+        setInterval(() => {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        }, 6000);
+
+        // Initial show
+        showTestimonial(testimonialIndex);
