@@ -640,7 +640,7 @@
             margin: 2rem auto 0.1rem 2rem;
             display: block;
             font-size: 2.5rem;
-            color: #184b44;
+            color: #2ea456;
             animation: fadeInUp 0.8s ease-out;
         }
 
@@ -655,7 +655,7 @@
         }
 
         .blog-text {
-           display: block;
+            display: block;
             max-width: 900px;
             margin: 1rem auto 3rem;
             font-size: 1.2rem;
@@ -670,8 +670,8 @@
         }
 
         .blog-img {
-            float:right;
-            width: 300px;
+            float: right;
+            height: 200px;
             margin: 0 1.4rem;
             border: 2px solid #F4C23B;
         }
@@ -683,4 +683,28 @@
             height: 250px;
             animation: fadeInUp 0.8s ease-out 0.4s both;
             border: 2px solid #F4C23B;
+        }
+
+        #Join {
+            z-index: 5;
+        }
+
+        .join-title {
+            text-align: center;
+            font-weight: bold;
+            margin: 2rem auto 0.1rem 2rem;
+            display: block;
+            font-size: 2.5rem;
+            color: #2ea456;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .join-text{
+            text-align: center;
+            display: block;
+            max-width: 900px;
+            margin: 1rem auto 3rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
