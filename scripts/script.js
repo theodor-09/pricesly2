@@ -44,7 +44,7 @@
             showPage(initialPage);
             
             // SLOT MACHINE Rotating Text - Improved Animation
-            const rotatingTexts = ["Your time matters.", "That's why we make grocery shopping instant and easy.", "Optimizing your groceries has never been this fast.", "Stop fooling, join FOODIN'"];
+            const rotatingTexts = ["Your time matters.", "That's why we make grocery shopping instant and easy.", "Optimizing your groceries has never been this fast."];
             let currentTextIndex = 0;
             const rotatingTextSlot = document.getElementById("rotating-text-slot");
 
@@ -75,7 +75,7 @@
             
             // Start the rotation with a delay to allow initial animation
             setTimeout(() => {
-                setInterval(slotRotateText, 6000);
+                setInterval(slotRotateText, 4500);
             }, 1000);
 
             // Counters - Calculate based on time since page load
@@ -98,19 +98,24 @@
         // Testimonial Wheel
         const testimonials = [
             {
-                quote: "Pricesly cut my grocery waste by 60%!",
-                author: "Sarah",
-                title: "Busy Mom"
-            },
-            {
-                quote: "I save $150 every month thanks to Pricesly",
-                author: "Michael",
-                title: "College Student"
-            },
+                quote: "Foodin' really helps me save money",
+                author: "Filip",
+                title: "Student"
+            }, 
             {
                 quote: "Finally a solution that actually works",
-                author: "David",
+                author: "Theodor",
                 title: "Environmentalist"
+            },
+            {
+                quote: "Foodin' has saved me a lot of time",
+                author: "Antonela",
+                title: "Busy mom"
+            },
+            {
+                quote: "As an engineer, Foodin' has optimized my coffee consumption",
+                author: "Mihnea",
+                title: "Engineering student"
             }
         ];
 
@@ -158,3 +163,17 @@
 
         // Initial show
         showTestimonial(testimonialIndex);
+
+        const videosIds = ["pricesly pics/Videos/Background1.mp4", "pricesly pics/Videos/Background2.mp4", "pricesly pics/Videos/Background3.mp4", "pricesly pics/Videos/Background4.mp4"];
+
+        const videoBackground = document.getElementById("backgroundVideo");
+
+        videoBackground.addEventListener('ended', () => {
+            let next;
+            do {
+                next = videosIds[Math.floor(Math.random() * videosIds.length)];
+            } while (next === videoBackground.querySelector('source').src.split('/').pop()); // Ensure we don't repeat the same video
+            videoBackground.querySelector('source').src = next;
+            videoBackground.load();
+            videoBackground.play();
+        })
