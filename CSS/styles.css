@@ -131,8 +131,9 @@
 
         /* SLOT MACHINE ROTATING TEXT - Improved Animation */
         .rotating-text {
+            border: 2px solid #184b44;
             background-color: rgba(223, 228, 221, 0.9);
-            padding: 10px;
+            padding: 40px;
             border-radius: 10px;
             font-size: 1.8rem;
             min-height: 4rem;
@@ -176,6 +177,7 @@
         }
 
         .counter-item {
+            border: 2px solid #184b44;
             display: flex;
             align-items: center;
             background-color: rgba(223, 228, 221, 0.9);
@@ -511,6 +513,7 @@
             align-items: center;
         }
         .testimonial-wheel-title {
+            border: 2px solid #184b44;
             background-color: rgba(223, 228, 221, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -521,6 +524,7 @@
             text-align: center;
         }
         .testimonial-wheel {
+            border: 2px solid #184b44;
             background: rgba(255,255,255,0.85);
             border-radius: 20px;
             box-shadow: 0 2px 16px rgba(0,0,0,0.08);
