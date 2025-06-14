@@ -18,197 +18,211 @@
             <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>    
         </ul>
     </nav>
-
-    <!-- Landing Page -->
-    <section class="page active" id="landing">
-        <video autoplay muted class="video-bg" id="backgroundVideo">
-            <source src="pricesly pics/Videos/Background1.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        
-        <div class="container">
-            <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="landing-logo">
+        <div class="main-content" id = "main">
+                <!-- Landing Page -->
+        <section class="page active" id="landing">
+            <video autoplay muted class="video-bg" id="backgroundVideo">
+                <source src="pricesly pics/Videos/Background1.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
             
-            <!-- SLOT MACHINE ROTATING TEXT -->
-            <div class="rotating-text" id="rotating-text-slot">
-                <span class="slot-anim active">Your time matters.</span>
-            </div>
-            
-            <div class="counters-container">
-                <!-- Food Waste Counter -->
-                <div class="counter-item">
-                    <div class="counter-text">
-                        <div class="counter-label">Food Wasted</div>
-                        <div class="counter-since">since you opened this website</div>
-                        <div class="counter-number" id="food-number">0 metric tons</div>
-                    </div>
-                    <img src="pricesly pics/pngtree-simulation-green-garbage-bag-image_1335956-removebg-preview.png" alt="Food Waste" class="counter-icon">
+            <div class="container">
+                <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="landing-logo">
+                
+                <!-- SLOT MACHINE ROTATING TEXT -->
+                <div class="rotating-text" id="rotating-text-slot">
+                    <span class="slot-anim active">Your time matters.</span>
                 </div>
                 
-                <!-- Money Lost Counter -->
-                <div class="counter-item">
-                    <div class="counter-text">
-                        <div class="counter-label">Money Lost</div>
-                        <div class="counter-since">since you opened this website</div>
-                        <div class="counter-number" id="money-number">$0 USD</div>
+                <div class="counters-container">
+                    <!-- Food Waste Counter -->
+                    <div class="counter-item">
+                        <div class="counter-text">
+                            <div class="counter-label">Food Wasted</div>
+                            <div class="counter-since">since you opened this website</div>
+                            <div class="counter-number" id="food-number">0 metric tons</div>
+                        </div>
+                        <img src="pricesly pics/pngtree-simulation-green-garbage-bag-image_1335956-removebg-preview.png" alt="Food Waste" class="counter-icon">
                     </div>
-                    <img src="pricesly pics/animated-money-symbols-money-money-sign-clipart--m2i8i8d3d3i8Z5K9-removebg-preview.png" alt="Money Lost" class="counter-icon">
+                    
+                    <!-- Money Lost Counter -->
+                    <div class="counter-item">
+                        <div class="counter-text">
+                            <div class="counter-label">Money Lost</div>
+                            <div class="counter-since">since you opened this website</div>
+                            <div class="counter-number" id="money-number">$0 USD</div>
+                        </div>
+                        <img src="pricesly pics/animated-money-symbols-money-money-sign-clipart--m2i8i8d3d3i8Z5K9-removebg-preview.png" alt="Money Lost" class="counter-icon">
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <a href="#services" class="nav-link" data-target="services"><p class="btn btn-primary">Find out more</p></a> 
+                    <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Join our cause</p></a>
+                    <a href="#" class="btn btn-secondary">Pre-order</a>
+                </div>
+                
+                <!-- TESTIMONIAL WHEEL -->
+                <div class="testimonial-wheel-container">
+                    <div class="testimonial-wheel-title">TESTIMONIALS</div>
+                    <div class="testimonial-wheel" id="testimonial-wheel">
+                        <div class="testimonial-quote" id="testimonial-quote">Foodin' cut my grocery waste by 60%!</div>
+                        <div class="testimonial-author" id="testimonial-author">Sarah</div>
+                        <div class="testimonial-title" id="testimonial-title">Busy Mom</div>
+                    </div>
+                    <div class="testimonial-wheel-controls">
+                        <button id="testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
+                        <button id="testimonial-next" aria-label="Next testimonial">&#8594;</button>
+                    </div>
                 </div>
             </div>
-            
-            <div class="buttons">
-                <a href="#" class="btn btn-primary">FIND OUT MORE</a>
-                <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Join our cause</p></a>
-                <a href="#" class="btn btn-secondary">Pre-order</a>
-            </div>
-            
-            <!-- TESTIMONIAL WHEEL -->
-            <div class="testimonial-wheel-container">
-                <div class="testimonial-wheel-title">TESTIMONIALS</div>
-                <div class="testimonial-wheel" id="testimonial-wheel">
-                    <div class="testimonial-quote" id="testimonial-quote">Foodin' cut my grocery waste by 60%!</div>
-                    <div class="testimonial-author" id="testimonial-author">Sarah</div>
-                    <div class="testimonial-title" id="testimonial-title">Busy Mom</div>
-                </div>
-                <div class="testimonial-wheel-controls">
-                    <button id="testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
-                    <button id="testimonial-next" aria-label="Next testimonial">&#8594;</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Page -->
-    <section class="page" id="services">
-        <div class="container">
-            <h2 class="services-title">Our <span class="highlight-green">Services</span></h2>
-            <p class="services-description">
-                FOODIN' is a <span class="highlight-green">free</span> app that automatically generates and optimizes your grocery list based on <span class="highlight-green">budget</span>, 
-                <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> and <span class="highlight-green">many more</span> for an effortless, eco-friendly shopping experience.
-            </p>
-            
-            <div class="app-features">
-                <div class="feature">
-                    <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM.jpeg" alt="FOODIN' App">
-                    <p class="feature-caption">Download our <span class="highlight-green">free</span> App</p>
-                </div>
-                <div class="feature">
-                    <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(1).jpeg" alt="Questionnaire">
-                    <p class="feature-caption">Answer some questions to establish buying behaviour</p>
-                </div>
-                <div class="feature">
-                    <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(2).jpeg" alt="Shopping List">
-                    <p class="feature-caption">We will generate your list</p>
-                </div>
-                <div class="feature">
-                    <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(3).jpeg" alt="Barcode Scanner">
-                    <p class="feature-caption">Scan the receipt to update your list</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Cause Page -->
-    <section class="page" id="cause">
-        <div class="container">
-            <h2 class="cause-title">Our Cause</h2>
-            
-            <div class="cause-text">
-                Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year, driven by household and retail inefficiencies, which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
-            </div>
-            </div>
-            
-            <div class="problem-section">
-                <h3 class="problem-title">This is because:</h3>
-                <ul style="text-align: left; max-width: 800px; margin: 0 auto;">
-                    <li>Consumers do not have the capacity or time to optimize their groceries in accordance with their goals and multitude of options</li>
-                    <li>Retailers still struggle to some extent to predict consumer demand</li>
-                </ul>
-            </div>
-            
-            <div class="problem-section">
-                <h3 class="problem-title">Foodin' wishes to remove:</h3>
-            </div>
-            
-            <div class="solutions-grid">
-                <div class="solution-item">
-                    <img src="pricesly pics/7806375-removebg-preview.png" alt="Human Error">
-                    <h4>Human Error</h4>
-                </div>
-                <div class="solution-item">
-                    <img src="pricesly pics/6724564-removebg-preview.png" alt="Food Waste">
-                    <h4>Food Waste</h4>
-                </div>
-                <div class="solution-item">
-                    <img src="pricesly pics/13010464-removebg-preview.png" alt="Financial Loss">
-                    <h4>Financial Loss</h4>
-                </div>
-                <div class="solution-item">
-                    <img src="pricesly pics/5429332-200-removebg-preview.png" alt="Time Loss">
-                    <h4>Time Loss</h4>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-
-    <!-- Contact Page -->
-    <section class="page" id="contact">
-        <div class="contact-container">
-            <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="contact-logo">
-            <h2 class="contact-title">Ready to Make a Difference?</h2>
-            <p class="contact-subtitle">Join us in our mission to reduce food waste and save money. Get in touch today!</p>
-            
-            <div class="contact-info">
-                <div class="contact-email">foodin.inc@gmail.com</div>
-                <div class="contact-phone">+40753122224</div>
-            </div>
-            
-            <div class="contact-cta">
-                <a href="#" class="btn btn-primary">Stop fooling <br>Join FOODIN'</a>
-            </div>
-        </div>
-    </section>
-    <script src="scripts/script.js"></script>
-    <!-- Blog Page -->
-    <section class="page" id = "blog">
-        <div class="container">
-            <h4 class="blog-title">Our Blog</h4>
-        </div>
-        <div class="blog-desc">We are happy to share details about our story</div>
-        <div class="blog-section">
-            <h7 class="problem-title">Did you know?</h7>
+        <!-- Services Page -->
+        <section class="page" id="services">
             <div class="container">
-                <img src="pricesly pics/Sarumana 2.jpg" alt="Sarumana logo" class="blog-img">  
-                <p class="blog-text"> This idea started from a small group of <span class="highlight-green">highschoolers</span> and it was only planned for a <span class="highlight-green">national</span> scale? <br> For this reason, it was first called <span class="highlight-green">"Săru' mâna"</span>, which is a <span class="highlight-green">Romanian</span> traditional way of thanking for the meal and it translates to <span class="highlight-green">"kiss your hand"</span>, and is a showing of great respect!</p>
-                <div class="container">
-                    <img src="pricesly pics/Sarumana 1.jpg" alt="Sarumana logo" class="blog-img-list">
-                    <img src="pricesly pics/Sarumana 3.jpg" alt="Sarumana logo" class="blog-img-list">
-                    <img src="pricesly pics/Sarumana 4.jpg" alt="Sarumana logo" class="blog-img-list">
+                <h2 class="services-title">Our <span class="highlight-green">Services</span></h2>
+                <p class="services-description">
+                    FOODIN' is a <span class="highlight-green">free</span> app that automatically generates and optimizes your grocery list based on <span class="highlight-green">budget</span>, 
+                    <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> and <span class="highlight-green">many more</span> for an effortless, eco-friendly shopping experience.
+                </p>
+                
+                <div class="app-features">
+                    <div class="feature">
+                        <img src="pricesly pics/AppIcon.jpg" alt="FOODIN' App">
+                        <p class="feature-caption">Download our <span class="highlight-green">free</span> App</p>
+                    </div>
+                    <div class="feature">
+                        <img src="pricesly pics/AppConnect.jpg" alt="Connect with your friends">
+                        <p class="feature-caption">You can create a joint list with your flatmates or family</p>
+                    </div>
+                    <div class="feature">
+                        <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(1).jpeg" alt="Questionnaire">
+                        <p class="feature-caption">Answer some questions to establish buying behaviour</p>
+                    </div>
+                    <div class="feature">
+                        <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(2).jpeg" alt="Shopping List">
+                        <p class="feature-caption">We will generate your list</p>
+                    </div>
+                    <div class="feature">
+                        <img src="pricesly pics/AppMap.jpg" alt="Map">
+                        <p class="feature-caption">We will find the best store option based on your location.</p>
+                    </div>
+                    <div class="feature">
+                        <img src="pricesly pics/WhatsApp%20Image%202025-05-06%20at%206.07.29%20PM%20(3).jpeg" alt="Barcode Scanner">
+                        <p class="feature-caption">Scan the receipt to update your list</p>
+                    </div> 
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Join Page -->
-    <section class="page" id = "Join">
-        <div class="cotainer">
-            <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="contact-logo">
-        </div>
-        <div class="container">
-            <h7 class = "join-title"> Hello and thank you for your interest in fooodin'!</h7>
-        </div>
-        <div class="container">
-            <p class="join-text">
-                We’re thrilled to have you consider joining us on our mission to revolutionize grocery shopping. 
-                <br>
-                We would like to know you better!
-            </p>
-        <div class="container">
-            <div class="buttons">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWXCWmRnYJZmUxJqIHnRCSB3pLc0W7V08e83E8oKeSJozsPg/viewform?usp=sharing&ouid=107115650441367802899" class="btn btn-primary">Collaborators</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSchZ-Af7Vp0DfDwdpFfQABJeXEpkzF_N2j4YsNO_Tomt9EdOw/viewform?usp=sharing&ouid=107115650441367802899" class="btn btn-secondary">Investors</a>
+        </section>
+
+        <!-- Our Cause Page -->
+        <section class="page" id="cause">
+            <div class="container">
+                <h2 class="cause-title">Our Cause</h2>
+                
+                <div class="cause-text">
+                    Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year, driven by household and retail inefficiencies, which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
+                </div>
+                </div>
+                
+                <div class="problem-section">
+                    <h3 class="problem-title">This is because:</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: 0 auto;">
+                        <li>Consumers do not have the capacity or time to optimize their groceries in accordance with their goals and multitude of options</li>
+                        <li>Retailers still struggle to some extent to predict consumer demand</li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3 class="problem-title">Foodin' wishes to remove:</h3>
+                </div>
+                
+                <div class="solutions-grid">
+                    <div class="solution-item">
+                        <img src="pricesly pics/7806375-removebg-preview.png" alt="Human Error">
+                        <h4>Human Error</h4>
+                    </div>
+                    <div class="solution-item">
+                        <img src="pricesly pics/6724564-removebg-preview.png" alt="Food Waste">
+                        <h4>Food Waste</h4>
+                    </div>
+                    <div class="solution-item">
+                        <img src="pricesly pics/13010464-removebg-preview.png" alt="Financial Loss">
+                        <h4>Financial Loss</h4>
+                    </div>
+                    <div class="solution-item">
+                        <img src="pricesly pics/5429332-200-removebg-preview.png" alt="Time Loss">
+                        <h4>Time Loss</h4>
+                    </div>
+                </div>
+                
             </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section class="page" id="contact">
+            <div class="contact-container">
+                <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="contact-logo">
+                <h2 class="contact-title">Ready to Make a Difference?</h2>
+                <p class="contact-subtitle">Join us in our mission to reduce food waste and save money. Get in touch today!</p>
+                
+                <div class="contact-info">
+                    <div class="contact-email">foodin.inc@gmail.com</div>
+                    <div class="contact-phone">+40753122224</div>
+                </div>
+                
+                <div class="contact-cta">
+                    <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Stop fooling <br>Join FOODIN'</p></a>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Page -->
+        <section class="page" id = "blog">
+            <div class="container">
+                <h4 class="blog-title">Our Blog</h4>
+            </div>
+            <div class="blog-desc">We are happy to share details about our story</div>
+            <div class="blog-section">
+                <h7 class="problem-title">Did you know?</h7>
+                <div class="container">
+                    <img src="pricesly pics/Sarumana 2.jpg" alt="Sarumana logo" class="blog-img">  
+                    <p class="blog-text"> This idea started from a small group of <span class="highlight-green">highschoolers</span> and it was only planned for a <span class="highlight-green">national</span> scale? <br> For this reason, it was first called <span class="highlight-green">"Săru' mâna"</span>, which is a <span class="highlight-green">Romanian</span> traditional way of thanking for the meal and it translates to <span class="highlight-green">"kiss your hand"</span>, and is a showing of great respect!</p>
+                    <div class="container">
+                        <img src="pricesly pics/Sarumana 1.jpg" alt="Sarumana logo" class="blog-img-list">
+                        <img src="pricesly pics/Sarumana 3.jpg" alt="Sarumana logo" class="blog-img-list">
+                        <img src="pricesly pics/Sarumana 4.jpg" alt="Sarumana logo" class="blog-img-list">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Join Page -->
+        <section class="page" id = "Join">
+            <div class="cotainer">
+                <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="contact-logo">
+            </div>
+            <div class="container">
+                <h7 class = "join-title"> Hello and thank you for your interest in foodin'!</h7>
+            </div>
+            <div class="container">
+                <p class="join-text">
+                    We’re thrilled to have you consider joining us on our mission to revolutionize grocery shopping. 
+                    <br>
+                    We would like to know you better!
+                </p>
+            <div class="container">
+                <div class="buttons">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWXCWmRnYJZmUxJqIHnRCSB3pLc0W7V08e83E8oKeSJozsPg/viewform?usp=sharing&ouid=107115650441367802899" class="btn btn-primary">Collaborators</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchZ-Af7Vp0DfDwdpFfQABJeXEpkzF_N2j4YsNO_Tomt9EdOw/viewform?usp=sharing&ouid=107115650441367802899" class="btn btn-secondary">Investors</a>
+                </div>
+            </div>
+        </section>
         </div>
-    </section>
+    <footer  id="pageFooter">
+        <div class="footer-container">
+            <p class="footer-text">Icon made by Uniconlabs from <a href="https://www.flaticon.com/" class="highlight-green">www.flaticon.com</a></p>
+        </div>
+    </footer>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

@@ -1,5 +1,24 @@
 // Track when user entered the page
         const startTime = new Date();
+
+        // Show footer on scroll down, hide on scroll up
+
+        let lastScroll = 0;
+            const footer = document.getElementById('pageFooter');
+            const landingPage = document.getElementById('landing');
+            landingPage.addEventListener("scroll", () => {     
+                if (landingPage.scrollTop > lastScroll) {
+                    footer.classList.add('show');
+                    console.log("Footer shown due to scroll down");
+                } 
+                else {
+                    footer.classList.remove('show');
+                    console.log("Footer hidden due to scroll up");
+                }
+                    lastScroll = landingPage.scrollTop;
+            });
+        
+        
         
         // Enhanced Page Transition System
         function showPage(targetId) {
@@ -22,6 +41,13 @@
             
             // Scroll to top
             window.scrollTo(0, 0);
+
+            // Handle footer visibility
+            if (targetId !== 'landing') {
+                footer.classList.remove('show');
+                console.log("Footer hidden due landing page not being active");
+            }
+            
         }
 
         // Navigation Event Listeners
@@ -176,4 +202,9 @@
             videoBackground.querySelector('source').src = next;
             videoBackground.load();
             videoBackground.play();
-        })
+        });
+
+            
+      
+
+        
