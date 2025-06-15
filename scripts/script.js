@@ -190,7 +190,7 @@
         // Initial show
         showTestimonial(testimonialIndex);
 
-        const videosIds = ["pricesly pics/Videos/Background1.mp4", "pricesly pics/Videos/Background2.mp4", "pricesly pics/Videos/Background3.mp4", "pricesly pics/Videos/Background4.mp4"];
+       /* const videosIds = ["pricesly pics/Videos/Background1.mp4", "pricesly pics/Videos/Background2.mp4", "pricesly pics/Videos/Background3.mp4", "pricesly pics/Videos/Background4.mp4"];
 
         const videoBackground = document.getElementById("backgroundVideo");
 
@@ -204,7 +204,7 @@
             videoBackground.play();
         });
 
-            
+            */
       
 
         
