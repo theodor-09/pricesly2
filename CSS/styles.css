@@ -755,19 +755,26 @@
             z-index: 1000;
             transition: transform 0.3s;
             transform: translateY(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         footer.show {
             transform: translateY(0);
         }
 
         .footer-container {
+            flex-wrap: nowrap;
+            display: flex;
+            max-width: 1200px;
             width: 100%;
+            align-items: center;
+            justify-content: center;
         }
 
         .footer-text {
-            text-align: left;
-            display: block;
-            max-width: 900px;
+            text-align: center;
+            max-width: 400px;
             margin: 0.3rem 1vw;
             font-size: 0.5rem;
             line-height: 1.8;
