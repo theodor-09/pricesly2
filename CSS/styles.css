@@ -10,7 +10,7 @@
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            min-height: 100dvh;
             margin: 0;
             padding: 0;
             background-color: rgb(223, 228, 221);
@@ -111,7 +111,7 @@
             align-items: center;
             text-align: center;
             z-index: 10;
-            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         .video-bg {
@@ -614,9 +614,9 @@
             }
             
             .rotating-text {
-                font-size: 1.8rem;
-                min-height: 3rem;
-                height: 3rem;
+                font-size: 1.5rem;
+                min-height: 2.5rem;
+                height: 2.5rem;
             }
             
             nav ul {
@@ -660,6 +660,19 @@
             }
             #landing {
                 padding-bottom: 200px;
+            }
+            .solutions-grid {
+            max-width: 98vw;
+            gap: 16px;
+            }
+            .solution-item {
+                min-width: 70px;
+                max-width: 140px;
+                padding: 12px;
+            }
+            .feature img {
+                max-width: 50%;
+                height: auto;
             }
         }
         /* Our Blog Page */
