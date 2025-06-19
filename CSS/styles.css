@@ -387,6 +387,7 @@
         }
 
         .problem-section {
+            padding-left: 20px;
             margin: 3rem auto;
             max-width: 900px;
             animation: fadeInUp 0.8s ease-out 0.4s both;
@@ -662,8 +663,8 @@
                 padding-bottom: 200px;
             }
             .solutions-grid {
-            max-width: 98vw;
-            gap: 16px;
+                max-width: 98vw;
+                gap: 16px;
             }
             .solution-item {
                 min-width: 70px;
@@ -673,6 +674,13 @@
             .feature img {
                 max-width: 50%;
                 height: auto;
+            }
+            .problem-section {
+            text-align: center;
+            font-size: 1rem;
+            }
+            #contact {
+                padding: 10px;
             }
         }
         /* Our Blog Page */
@@ -688,6 +696,14 @@
             font-size: 2.5rem;
             color: #2ea456;
             animation: fadeInUp 0.8s ease-out;
+        }
+
+        .blog-section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2ea456;
+            margin: 1rem;
+            padding: 10px;
         }
 
         .blog-desc {
@@ -707,6 +723,7 @@
             font-size: 1.2rem;
             line-height: 1.8;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            padding: 10px;
         }
 
         .blog-section {
