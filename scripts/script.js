@@ -3,8 +3,9 @@
 
         // Show footer on scroll down, hide on scroll up
 
+        const footer = document.getElementById('pageFooter');
+/*
         let lastScroll = 0;
-            const footer = document.getElementById('pageFooter');
             const landingPage = document.getElementById('landing');
             landingPage.addEventListener("scroll", () => {     
                 if (landingPage.scrollTop >= lastScroll) {
@@ -16,6 +17,30 @@
                     console.log("Footer hidden due to scroll up");
                 }
                     lastScroll = landingPage.scrollTop;
+            });
+        */
+
+        // Show nav on scroll up, hide on scroll down
+
+        let lastScroll = 0;
+            const nav = document.querySelector('nav');
+            const landingPage = document.getElementById('landing');
+            landingPage.addEventListener("scroll", () => {     
+                if (landingPage.scrollTop >= lastScroll) {
+                    nav.classList.add('hide');
+                    console.log("Footer hidden due to scroll down");
+                } 
+                else {
+                    nav.classList.remove('hide');
+                    console.log("nav shown due to scroll up");
+                }
+                const atBottom = Math.ceil(landingPage.scrollTop + landingPage.clientHeight) >= landingPage.scrollHeight;
+                if (atBottom) {
+                    footer.classList.add('show');
+                } else {
+                    footer.classList.remove('show');
+                }
+                lastScroll = landingPage.scrollTop;
             });
         
         
@@ -44,6 +69,7 @@
 
             // Handle footer visibility
             if (targetId !== 'landing') {
+                nav.classList.remove('hide');
                 footer.classList.remove('show');
                 console.log("Footer hidden due landing page not being active");
             }
@@ -69,41 +95,6 @@
             const initialPage = window.location.hash.substring(1) || 'landing';
             showPage(initialPage);
             
-            // SLOT MACHINE Rotating Text - Improved Animation
-            const rotatingTexts = ["Your time matters.", "That's why we make grocery shopping instant and easy.", "Optimizing your groceries has never been this fast."];
-            let currentTextIndex = 0;
-            const rotatingTextSlot = document.getElementById("rotating-text-slot");
-
-            function createSlotSpan(text, className) {
-                const span = document.createElement("span");
-                span.className = `slot-anim${className ? ' ' + className : ''}`;
-                span.textContent = text;
-                return span;
-            }
-            
-            function slotRotateText() {
-                const prevSpan = rotatingTextSlot.querySelector('.slot-anim.active');
-                if (prevSpan) {
-                    prevSpan.classList.remove('active');
-                    prevSpan.classList.add('out');
-                    setTimeout(() => {
-                        if (prevSpan.parentNode) rotatingTextSlot.removeChild(prevSpan);
-                    }, 800);
-                }
-                
-                currentTextIndex = (currentTextIndex + 1) % rotatingTexts.length;
-                const newSpan = createSlotSpan(rotatingTexts[currentTextIndex], 'active');
-                rotatingTextSlot.appendChild(newSpan);
-                
-                // Force reflow to trigger animation
-                void newSpan.offsetWidth;
-            }
-            
-            // Start the rotation with a delay to allow initial animation
-            setTimeout(() => {
-                setInterval(slotRotateText, 4500);
-            }, 1000);
-
             // Counters - Calculate based on time since page load
             const foodNumber = document.getElementById("food-number");
             const moneyNumber = document.getElementById("money-number");
@@ -190,7 +181,7 @@
         // Initial show
         showTestimonial(testimonialIndex);
 
-       const videosIds = ["pricesly pics/Videos/Background1.mp4", "pricesly pics/Videos/Background2.mp4", "pricesly pics/Videos/Background3.mp4"];
+    /*  const videosIds = ["pricesly pics/Videos/Background1.mp4", "pricesly pics/Videos/Background2.mp4", "pricesly pics/Videos/Background3.mp4"];
 
         const videoBackground = document.getElementById("backgroundVideo");
 
@@ -203,6 +194,7 @@
             videoBackground.load();
             videoBackground.play();
         });
+        */
       
         function fixScrollUpdateSafariIOs() {
             const isIosSafari = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
@@ -230,4 +222,43 @@
             }
         }
 
+        let currentSignups = 200;
+        let interval = 60000;
+        const maxSignups = 500;
+        const progressBar = document.getElementById('progressBar');
         
+        // Update every 30 seconds
+        setInterval(updateSignups, interval);
+        
+        function updateSignups() {
+            interval = Math.random() * 40000 + 20000;
+            // Random increment (or replace with real API call)
+            const increment = 1;
+            
+            // Don't exceed max
+            if (currentSignups + increment <= maxSignups) {
+                currentSignups += increment;
+                
+                // Update display
+                document.querySelector('.current').textContent = currentSignups;
+                document.querySelector('.progress-bar').textContent = currentSignups;
+                document.querySelector('.howManyLeft').textContent = 500 - currentSignups;
+                progressBar.textContent = currentSignups;
+                
+                // Calculate percentage
+                const percentage = (currentSignups / maxSignups) * 100;
+                progressBar.style.width = percentage + '%';
+                
+                // Change color when nearing full
+                if (percentage > 80) {
+                    progressBar.style.background = 'linear-gradient(90deg, #FF9800, #FFC107)';
+                }
+                if (percentage > 95) {
+                    progressBar.style.background = 'linear-gradient(90deg, #F44336, #FF5722)';
+                }
+            }
+        }
+        
+        // Initialize
+        updateSignups();
+

@@ -15,6 +15,9 @@
 
         gtag('config', 'G-MQ5W3EV1T1');
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -23,75 +26,49 @@
         <ul>
             <li><a href="#home" class="nav-link active" data-target="landing">Home</a></li>
             <li><a href="#cause" class="nav-link" data-target="cause">Our Cause</a></li>
-            <li><a href="#services" class="nav-link" data-target="services">Our App</a></li>
             <li><a href="#blog" class="nav-link" data-target="blog">Blog</a></li>
             <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>    
         </ul>
     </nav>
-        <div class="main-content" id = "main">
+    <div class="main-content" id = "main">
                 <!-- Landing Page -->
         <section class="page active" id="landing">
-            <video autoplay muted class="video-bg" id="backgroundVideo">
+            <video controls muted autoplay loop class="video-bg" id="backgroundVideo">
                 <source src="pricesly pics/Videos/Background1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
-            </video>
-            
-            <div class="container">
-                <img src="pricesly pics/FoodinNoBackground.png" alt="FOOODIN' Logo" class="landing-logo">
-                
-                <!-- SLOT MACHINE ROTATING TEXT -->
-                <div class="rotating-text" id="rotating-text-slot">
-                    <span class="slot-anim active">Your time matters.</span>
-                </div>
-                
-                <div class="counters-container">
-                    <!-- Food Waste Counter -->
-                    <div class="counter-item">
-                        <div class="counter-text">
-                            <div class="counter-label">Food Wasted</div>
-                            <div class="counter-since">since you opened this website</div>
-                            <div class="counter-number" id="food-number">0 metric tons</div>
-                        </div>
-                        <img src="pricesly pics/pngtree-simulation-green-garbage-bag-image_1335956-removebg-preview.png" alt="Food Waste" class="counter-icon">
-                    </div>
-                    
-                    <!-- Money Lost Counter -->
-                    <div class="counter-item">
-                        <div class="counter-text">
-                            <div class="counter-label">Money Lost</div>
-                            <div class="counter-since">since you opened this website</div>
-                            <div class="counter-number" id="money-number">$0 USD</div>
-                        </div>
-                        <img src="pricesly pics/animated-money-symbols-money-money-sign-clipart--m2i8i8d3d3i8Z5K9-removebg-preview.png" alt="Money Lost" class="counter-icon">
-                    </div>
-                </div>
-                
-                <div class="buttons">
-                    <a href="#services" class="nav-link" data-target="services"><p class="btn btn-primary">Find out more</p></a> 
-                    <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Join our cause</p></a>
-                    <a href="FindOutMore.html"><p class="btn btn-secondary">Unlock Early Access + FREE Rewards</p></a>
-                </div>
-                
-                <!-- TESTIMONIAL WHEEL -->
-                <div class="testimonial-wheel-container">
-                    <div class="testimonial-wheel-title">TESTIMONIALS</div>
-                    <div class="testimonial-wheel" id="testimonial-wheel">
-                        <div class="testimonial-quote" id="testimonial-quote"><span translate="no">Foodin'</span> cut my grocery waste by 60%!</div>
-                        <div class="testimonial-author" id="testimonial-author">Sarah</div>
-                        <div class="testimonial-title" id="testimonial-title">Busy Mom</div>
-                    </div>
-                    <div class="testimonial-wheel-controls">
-                        <button id="testimonial-prev" aria-label="Previous testimonial">prev</button>
-                        <button id="testimonial-next" aria-label="Next testimonial">next</button>
-                    </div>
-                </div>
+            </video>  
+            <div class="banner-container">
+                <img src="pricesly pics/Banner.png" alt="Foodin' Banner" class="landing-banner">
+                <img src="pricesly pics/Stop.png" alt="Stop Fooling" class="stop-image">
+                <img src="pricesly pics/Join.png" alt="Join Foodin" class="join-image">
             </div>
-        </section>
-
-        <!-- Services Page -->
-        <section class="page" id="services">
             <div class="container">
-                <h2 class="services-title">Our <span class="highlight-green">Services</span></h2>
+                <!-- SLOT MACHINE ROTATING TEXT -->
+                <div class="title">
+                    Never Forget a Grocery Item Again!
+                </div>
+                <div class="subtitle">
+                    AI-generated lists save time and reduce waste. Join early for free rewards!
+                </div>
+                <div class="container">
+                    <div class="signup-tracker">
+                
+                        <a href="FindOutMore.html"><p class="btn btn-early-access">Early Access</p></a>
+                        
+                        <div class="promo-subtitle">
+                            First 500 users get lifetime perks. Be one of the first to experience <span translate="no" class="highlight-green">Foodin'</span> and enjoy exclusive benefits!
+                        </div>
+                        <div class="tracker-header">
+                            <span class="current">200</span>
+                            <span class="target">/ 500 Early Access Spots</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar">200</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                <h2 class="services-title">How it works</span></h2>
                 <p class="services-description">
                     <span translate="no">Foodin'</span> is a <span class="highlight-green">free</span> app that automatically generates and optimizes your grocery list based on <span class="highlight-green">budget</span>, 
                     <span class="highlight-green">deals</span>, <span class="highlight-green">personal objectives</span> for an effortless, eco-friendly shopping experience.
@@ -124,6 +101,76 @@
                     </div> 
                 </div>
             </div>
+            
+            <div class="early-access-banner" style="border-top: #184b44 2px solid;">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        ✅ Exclusive Foodin promotions.
+                    </div>
+                </div>
+            </div>
+            <div class="early-access-banner">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        ✅ Early notification when the app launches (no spam, just one alert).
+                    </div>
+                </div>
+            </div>
+            <div class="early-access-banner">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        ✅ First access to claim your account with special perks.
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <a href="FindOutMore.html"><p class="btn btn-early-access">Claim your spot <span class="highlight-green">NOW</span></p></a>
+            </div>
+            
+            <div class="spots-left" style="animation: pulse 2s infinite;">
+                There are only <span class="howManyLeft">300</span>/500 spots left!
+            </div>
+                
+            <div class="buttons-title">
+                Would you like to...
+            </div>
+
+                <div class="buttons">
+                    <a href="#cause" class="nav-link" data-target="cause"><p class="btn btn-primary">Find out more</p></a> 
+                    <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Join our cause</p></a>
+                </div>
+                
+                <!-- TESTIMONIAL WHEEL -->
+                <div class="testimonial-wheel-container">
+                    <div class="testimonial-wheel-title">TESTIMONIALS</div>
+                    <div class="testimonial-wheel" id="testimonial-wheel">
+                        <div class="testimonial-quote" id="testimonial-quote"><span translate="no">Foodin'</span> cut my grocery waste by 60%!</div>
+                        <div class="testimonial-author" id="testimonial-author">Sarah</div>
+                        <div class="testimonial-title" id="testimonial-title">Busy Mom</div>
+                    </div>
+                    <div class="testimonial-wheel-controls">
+                        <button id="testimonial-prev" aria-label="Previous testimonial">prev</button>
+                        <button id="testimonial-next" aria-label="Next testimonial">next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="Container">
+                <div class="poweredBy">
+                    Powered by <span class="highlight-green"> students </span> from:
+                    <div class="powered-grid">
+                        <div class="solution-item">
+                            <img src="pricesly pics/IE_no_background.png" alt="IE University">
+                        </div>
+                        <div class="solution-item">
+                            <img src="pricesly pics/ETH.png" alt="ETH University">
+                        </div>
+                        <div class="solution-item">
+                            <img src="pricesly pics/TUM_no_background.png" alt="TUM University">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Our Cause Page -->
@@ -134,6 +181,27 @@
                 <div class="cause-text">
                     Globally, over <span class="highlight-red">1 billion tonnes</span> of edible food are wasted each year, driven by household and retail inefficiencies, which amounts to <span class="highlight-red">$1.6 trillion</span> in losses, leaves one‐third of the world food insecure, and generates <span class="highlight-red">8–10%</span> of greenhouse gas emissions. This waste stems from time‐consuming manual tracking, human error, and a lack of real‐time inventory insights at both the household (<span class="highlight-red">631 M tonnes, $1 trillion loss</span>) and retail (<span class="highlight-red">131 M tonnes, $400 billion loss</span>) levels.
                 </div>
+                
+                <div class="counters-container">
+                    <!-- Food Waste Counter -->
+                    <div class="counter-item">
+                        <div class="counter-text">
+                            <div class="counter-label">Food Wasted</div>
+                            <div class="counter-since">since you opened this website</div>
+                            <div class="counter-number" id="food-number">0 metric tons</div>
+                        </div>
+                        <img src="pricesly pics/pngtree-simulation-green-garbage-bag-image_1335956-removebg-preview.png" alt="Food Waste" class="counter-icon">
+                    </div>
+                    
+                    <!-- Money Lost Counter -->
+                    <div class="counter-item">
+                        <div class="counter-text">
+                            <div class="counter-label">Money Lost</div>
+                            <div class="counter-since">since you opened this website</div>
+                            <div class="counter-number" id="money-number">$0 USD</div>
+                        </div>
+                        <img src="pricesly pics/animated-money-symbols-money-money-sign-clipart--m2i8i8d3d3i8Z5K9-removebg-preview.png" alt="Money Lost" class="counter-icon">
+                    </div>
                 </div>
                 
                 <div class="problem-section">
@@ -186,10 +254,24 @@
                 <div class="contact-cta">
                     <a href="#Join" class="nav-link" data-target="Join"><p class="btn btn-primary">Stop fooling <br>Join <span translate="no">Foodin'</span></p></a>
                 </div>
-
-                
-
+                <div class="Container">
+                <div class="poweredBy">
+                    Powered by <span class="highlight-green"> students </span> from:
+                    <div class="powered-grid">
+                        <div class="solution-item">
+                            <img src="pricesly pics/IE_no_background.png" alt="IE University">
+                        </div>
+                        <div class="solution-item">
+                            <img src="pricesly pics/ETH.png" alt="ETH University">
+                        </div>
+                        <div class="solution-item">
+                            <img src="pricesly pics/TUM_no_background.png" alt="TUM University">
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
+            
         </section>
         <!-- Blog Page -->
         <section class="page" id = "blog">
@@ -242,7 +324,7 @@
             </div>
         </section>
         </div>
-    <footer  id="pageFooter">
+    <footer id="pageFooter">
         <div class="footer-container">
             <span class="footer-text"><a href="#credits" class="nav-link active" data-target="credits"><span class="highlight-green">Credits</span></a></span> 
             <span class="footer-text">Our <a href="https://app.termly.io/dsar/8b47f6d2-7168-40f9-b669-de144e9dcc06" class="highlight-green">DSAR</a> form</span> 
